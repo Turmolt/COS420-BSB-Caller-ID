@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = BSBInfoBox
+TARGET = COS420-BSB-InfoBox
 TEMPLATE = app
 INCLUDEPATH += inc
 OBJECTS_DIR = obj
