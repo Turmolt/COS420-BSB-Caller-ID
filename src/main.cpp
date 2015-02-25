@@ -7,6 +7,6 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-	// Here's a test comment
+	// Here's a test comment chadconflict added something to the end of the comment
     return a.exec();
 }
