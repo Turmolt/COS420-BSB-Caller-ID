@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "sqlhelper.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,6 +19,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect (ui->ButtonContact8, SIGNAL(click()),this, SLOT(openContactWindow()));
     connect (ui->ButtonContact9, SIGNAL(click()),this, SLOT(openContactWindow()));
     connect (ui->ButtonContact10, SIGNAL(click()),this, SLOT(openContactWindow()));
+
+    sqlHelper sqlconn;
+    bool connResult = sqlconn.createConnection();
+    QSqlDatabase db = sqlconn.getInstance();
+    if (!connResult) {
+        qDebug() << "SQL Error" << db.lastError();
+    }
+    sqlconn.closeConnection();
 }
 
 MainWindow::~MainWindow()

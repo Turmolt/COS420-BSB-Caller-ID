@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,9 +18,11 @@ OBJECTS_DIR = obj
 SOURCES += src/main.cpp\
            src/contactwindow.cpp \
            src/mainwindow.cpp \
+           src/sqlhelper.cpp
 
 HEADERS += inc/contactwindow.h \
            inc/mainwindow.h \
+           inc/sqlhelper.h
 
 FORMS   += ui/mainwindow.ui \
            ui/contactwindow.ui \
