@@ -38,7 +38,6 @@ void MainWindow::openContactWindow()
 {
     myContactWindow = new ContactWindow();
     myContactWindow->show();
-
 }
 
 void MainWindow::on_ButtonContact1_clicked()
@@ -53,9 +52,6 @@ void MainWindow::on_ButtonContact1_clicked()
     ui->ButtonContact8->setVisible(false);
     ui->ButtonContact9->setVisible(false);
     ui->ButtonContact10->setVisible(false);
-
-
-
 }
 
 void MainWindow::on_ButtonContact2_clicked()
@@ -71,6 +67,7 @@ void MainWindow::on_ButtonContact2_clicked()
     ui->ButtonContact9->setVisible(false);
     ui->ButtonContact10->setVisible(false);
 }
+
 void MainWindow::on_ButtonContact3_clicked()
 {
     openContactWindow();
@@ -84,6 +81,7 @@ void MainWindow::on_ButtonContact3_clicked()
     ui->ButtonContact9->setVisible(false);
     ui->ButtonContact10->setVisible(false);
 }
+
 void MainWindow::on_ButtonContact4_clicked()
 {
     openContactWindow();
@@ -97,6 +95,7 @@ void MainWindow::on_ButtonContact4_clicked()
     ui->ButtonContact9->setVisible(false);
     ui->ButtonContact10->setVisible(false);
 }
+
 void MainWindow::on_ButtonContact5_clicked()
 {
     openContactWindow();
@@ -110,6 +109,7 @@ void MainWindow::on_ButtonContact5_clicked()
     ui->ButtonContact9->setVisible(false);
     ui->ButtonContact10->setVisible(false);
 }
+
 void MainWindow::on_ButtonContact6_clicked()
 {
     openContactWindow();
@@ -123,6 +123,7 @@ void MainWindow::on_ButtonContact6_clicked()
     ui->ButtonContact9->setVisible(false);
     ui->ButtonContact10->setVisible(false);
 }
+
 void MainWindow::on_ButtonContact7_clicked()
 {
     openContactWindow();
@@ -136,6 +137,7 @@ void MainWindow::on_ButtonContact7_clicked()
     ui->ButtonContact9->setVisible(false);
     ui->ButtonContact10->setVisible(false);
 }
+
 void MainWindow::on_ButtonContact8_clicked()
 {
     openContactWindow();
@@ -149,6 +151,7 @@ void MainWindow::on_ButtonContact8_clicked()
     ui->ButtonContact9->setVisible(false);
     ui->ButtonContact10->setVisible(false);
 }
+
 void MainWindow::on_ButtonContact9_clicked()
 {
     openContactWindow();

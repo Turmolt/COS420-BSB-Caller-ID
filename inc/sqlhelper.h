@@ -5,13 +5,13 @@
 
 
 class sqlHelper {
-public:
-    bool createConnection(void);
-    bool closeConnection(void);
-    QSqlDatabase getInstance(void);
+    public:
+        bool createConnection(void);
+        bool closeConnection(void);
+        QSqlDatabase getInstance(void);
 
-private:
-    QSqlDatabase db;
+    private:
+        QSqlDatabase db;
 };
 
 
