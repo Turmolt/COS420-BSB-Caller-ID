@@ -1,9 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include <QMainWindow>
 
-#include"contactwindow.h"
 
 
 namespace Ui
@@ -20,10 +18,9 @@ class MainWindow : public QMainWindow
         ~MainWindow();
 
     public slots:
-        void openContactWindow(); // Contact Window
+
 
     private:
-        ContactWindow *myContactWindow; // Contact window
         Ui::MainWindow *ui;
 
     private slots:
@@ -37,6 +34,7 @@ class MainWindow : public QMainWindow
         void on_ButtonContact8_clicked();
         void on_ButtonContact9_clicked();
         void on_ButtonContact10_clicked();
+
 };
 
 #endif // MAINWINDOW_H

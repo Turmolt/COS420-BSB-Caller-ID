@@ -1,22 +1,22 @@
-#ifndef CONTACTWINDOW_H
-#define CONTACTWINDOW_H
+//#ifndef CONTACTWINDOW_H
+//#define CONTACTWINDOW_H
 
-#include <QMainWindow>
+//#include <QMainWindow>
 
-namespace Ui {
-class ContactWindow;
-}
+//namespace Ui {
+//class ContactWindow;
+//}
 
-class ContactWindow : public QMainWindow
-{
-    Q_OBJECT
+//class ContactWindow : public QMainWindow
+//{
+//    Q_OBJECT
 
-    public:
-        explicit ContactWindow(QWidget *parent = 0);
-        ~ContactWindow();
+//    public:
+//        explicit ContactWindow(QWidget *parent = 0);
+//        ~ContactWindow();
 
-    private:
-        Ui::ContactWindow *ui;
-};
+//    private:
+//        Ui::ContactWindow *ui;
+//};
 
-#endif // CONTACTWINDOW_H
+//#endif // CONTACTWINDOW_H

@@ -1,5 +1,4 @@
 #include "contactwindow.h"
-#include "ui_contactwindow.h"
 
 ContactWindow::ContactWindow(QWidget *parent) :
     QMainWindow(parent),

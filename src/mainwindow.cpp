@@ -2,24 +2,14 @@
 #include "ui_mainwindow.h"
 #include "sqlhelper.h"
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->widget_notes->setVisible(false);
 
-    connect (ui->ButtonContact1, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact2, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact3, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact4, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact5, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact6, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact7, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact8, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact9, SIGNAL(click()),this, SLOT(openContactWindow()));
-    connect (ui->ButtonContact10, SIGNAL(click()),this, SLOT(openContactWindow()));
-
+    qDebug() << "Connecting to database...";
     sqlHelper sqlconn;
     bool connResult = sqlconn.createConnection();
     QSqlDatabase db = sqlconn.getInstance();
@@ -34,148 +24,518 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::openContactWindow()
-{
-    myContactWindow = new ContactWindow();
-    myContactWindow->show();
-}
-
 void MainWindow::on_ButtonContact1_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
+    if (ui->ButtonContact1->isChecked())
+    {
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
+
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
 }
 
 void MainWindow::on_ButtonContact2_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
-}
+    if (ui->ButtonContact2->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
 
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
+}
 void MainWindow::on_ButtonContact3_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
+    if (ui->ButtonContact3->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
+
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
 }
 
 void MainWindow::on_ButtonContact4_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
+    if (ui->ButtonContact4->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
+
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
 }
 
 void MainWindow::on_ButtonContact5_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
+    if (ui->ButtonContact5->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
+
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
 }
 
 void MainWindow::on_ButtonContact6_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
-}
+    if (ui->ButtonContact6->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
 
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
+}
 void MainWindow::on_ButtonContact7_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
-}
+    if (ui->ButtonContact7->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
 
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
+}
 void MainWindow::on_ButtonContact8_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
-}
+    if (ui->ButtonContact8->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
 
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
+}
 void MainWindow::on_ButtonContact9_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact10->setVisible(false);
+    if (ui->ButtonContact9->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact10->setVisible(false);
+
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact10->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact10->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact10->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
 }
 
 void MainWindow::on_ButtonContact10_clicked()
 {
-    openContactWindow();
-    ui->ButtonContact1->setVisible(false);
-    ui->ButtonContact2->setVisible(false);
-    ui->ButtonContact3->setVisible(false);
-    ui->ButtonContact4->setVisible(false);
-    ui->ButtonContact5->setVisible(false);
-    ui->ButtonContact6->setVisible(false);
-    ui->ButtonContact7->setVisible(false);
-    ui->ButtonContact8->setVisible(false);
-    ui->ButtonContact9->setVisible(false);
+    if (ui->ButtonContact10->isChecked())
+    {
+        ui->ButtonContact1->setVisible(false);
+        ui->ButtonContact2->setVisible(false);
+        ui->ButtonContact3->setVisible(false);
+        ui->ButtonContact4->setVisible(false);
+        ui->ButtonContact5->setVisible(false);
+        ui->ButtonContact6->setVisible(false);
+        ui->ButtonContact7->setVisible(false);
+        ui->ButtonContact8->setVisible(false);
+        ui->ButtonContact9->setVisible(false);
+
+        ui->label_Contact1->setVisible(false);
+        ui->label_Contact2->setVisible(false);
+        ui->label_Contact3->setVisible(false);
+        ui->label_Contact4->setVisible(false);
+        ui->label_Contact5->setVisible(false);
+        ui->label_Contact6->setVisible(false);
+        ui->label_Contact7->setVisible(false);
+        ui->label_Contact8->setVisible(false);
+        ui->label_Contact9->setVisible(false);
+
+        ui->widget_notes->setVisible(true);
+    }
+    else
+    {
+        ui->ButtonContact1->setVisible(true);
+        ui->ButtonContact2->setVisible(true);
+        ui->ButtonContact3->setVisible(true);
+        ui->ButtonContact4->setVisible(true);
+        ui->ButtonContact5->setVisible(true);
+        ui->ButtonContact6->setVisible(true);
+        ui->ButtonContact7->setVisible(true);
+        ui->ButtonContact8->setVisible(true);
+        ui->ButtonContact9->setVisible(true);
+
+        ui->label_Contact1->setVisible(true);
+        ui->label_Contact2->setVisible(true);
+        ui->label_Contact3->setVisible(true);
+        ui->label_Contact4->setVisible(true);
+        ui->label_Contact5->setVisible(true);
+        ui->label_Contact6->setVisible(true);
+        ui->label_Contact7->setVisible(true);
+        ui->label_Contact8->setVisible(true);
+        ui->label_Contact9->setVisible(true);
+
+        ui->widget_notes->setVisible(false);
+    }
 }

@@ -15,13 +15,11 @@ INCLUDEPATH += inc
 OBJECTS_DIR = obj
 
 
-SOURCES += src/main.cpp\
-           src/contactwindow.cpp \
+SOURCES += src/main.cpp \
            src/mainwindow.cpp \
            src/sqlhelper.cpp
 
-HEADERS += inc/contactwindow.h \
-           inc/mainwindow.h \
+HEADERS += inc/mainwindow.h \
            inc/sqlhelper.h
 
 FORMS   += ui/mainwindow.ui \
