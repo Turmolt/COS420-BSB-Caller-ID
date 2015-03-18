@@ -136,7 +136,7 @@ QTextEdit
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Incomming Call:</string>
+          <string>Incoming Call:</string>
          </property>
         </widget>
        </item>
