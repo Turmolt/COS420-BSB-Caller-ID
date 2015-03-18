@@ -23,7 +23,6 @@ HEADERS += inc/mainwindow.h \
            inc/sqlhelper.h
 
 FORMS   += ui/mainwindow.ui \
-           ui/contactwindow.ui \
 
 
 Release:DESTDIR = bld/release
