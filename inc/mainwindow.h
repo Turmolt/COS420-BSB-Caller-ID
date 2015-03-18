@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
+#include <QPushButton>
+#include <QLabel>
+#include <QVector>
 
 
 
@@ -22,6 +25,11 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow *ui;
+        void toggle_Contacts(int contact_Number);
+        void hide_Others(int contact_Number);
+        void show_All();
+        QVector<QPushButton*> all_Buttons;
+        QVector<QLabel*> all_Labels;
 
     private slots:
         void on_ButtonContact1_clicked();
