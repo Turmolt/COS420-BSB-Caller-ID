@@ -174,7 +174,7 @@ QTextEdit
         <number>5</number>
        </property>
        <item>
-        <widget class="QPushButton" name="ButtonContact1">
+        <widget class="QPushButton" name="Button_Contact_01">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -207,14 +207,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact1">
+        <widget class="QLabel" name="label_Contact_01">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact2">
+        <widget class="QPushButton" name="Button_Contact_02">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -239,14 +239,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact2">
+        <widget class="QLabel" name="label_Contact_02">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact3">
+        <widget class="QPushButton" name="Button_Contact_03">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -271,14 +271,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact3">
+        <widget class="QLabel" name="label_Contact_03">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact4">
+        <widget class="QPushButton" name="Button_Contact_04">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -303,14 +303,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact4">
+        <widget class="QLabel" name="label_Contact_04">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact5">
+        <widget class="QPushButton" name="Button_Contact_05">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -335,14 +335,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact5">
+        <widget class="QLabel" name="label_Contact_05">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact6">
+        <widget class="QPushButton" name="Button_Contact_06">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -367,14 +367,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact6">
+        <widget class="QLabel" name="label_Contact_06">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact7">
+        <widget class="QPushButton" name="Button_Contact_07">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -399,14 +399,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact7">
+        <widget class="QLabel" name="label_Contact_07">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact8">
+        <widget class="QPushButton" name="Button_Contact_08">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -431,14 +431,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact8">
+        <widget class="QLabel" name="label_Contact_08">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact9">
+        <widget class="QPushButton" name="Button_Contact_09">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -463,14 +463,14 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact9">
+        <widget class="QLabel" name="label_Contact_09">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="ButtonContact10">
+        <widget class="QPushButton" name="Button_Contact_10">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -495,7 +495,7 @@ QTextEdit
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_Contact10">
+        <widget class="QLabel" name="label_Contact_10">
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
@@ -570,26 +570,37 @@ QTextEdit
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="Button_save">
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
-            </property>
-            <property name="contextMenuPolicy">
-             <enum>Qt::DefaultContextMenu</enum>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="text">
-             <string>Save</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QPushButton" name="Button_Close">
+              <property name="text">
+               <string>Close</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Button_Save">
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="contextMenuPolicy">
+               <enum>Qt::DefaultContextMenu</enum>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string>Save</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>

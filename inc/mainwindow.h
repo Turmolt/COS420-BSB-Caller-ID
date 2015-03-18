@@ -32,16 +32,18 @@ class MainWindow : public QMainWindow
         QVector<QLabel*> all_Labels;
 
     private slots:
-        void on_ButtonContact1_clicked();
-        void on_ButtonContact2_clicked();
-        void on_ButtonContact3_clicked();
-        void on_ButtonContact4_clicked();
-        void on_ButtonContact5_clicked();
-        void on_ButtonContact6_clicked();
-        void on_ButtonContact7_clicked();
-        void on_ButtonContact8_clicked();
-        void on_ButtonContact9_clicked();
-        void on_ButtonContact10_clicked();
+        void on_Button_Contact_01_clicked();
+        void on_Button_Contact_02_clicked();
+        void on_Button_Contact_03_clicked();
+        void on_Button_Contact_04_clicked();
+        void on_Button_Contact_05_clicked();
+        void on_Button_Contact_06_clicked();
+        void on_Button_Contact_07_clicked();
+        void on_Button_Contact_08_clicked();
+        void on_Button_Contact_09_clicked();
+        void on_Button_Contact_10_clicked();
+        void on_Button_Close_clicked();
+        void on_Button_Save_clicked();
 
 };
 
