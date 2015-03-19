@@ -29,8 +29,10 @@ class MainWindow : public QMainWindow
         Ui::MainWindow *ui;
         int displayed_Contact;
         void toggle_Contacts(int contact_Number);
-        void display_Contact(int contact_Number);
-        void show_All(int contact_Number);
+        void show_Contact(int contact_Number);
+        void show_All(void);
+        void add_Note(int contact_Number, QString note);
+        void refresh_Notes(int contact_Number);
         QVector<QPushButton*> all_Buttons;
         QVector<QLabel*> all_Labels;
         QVector<QStack<QString>* > contact_Notes;
