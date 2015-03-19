@@ -3,7 +3,8 @@
 #include "sqlhelper.h"
 
 
-bool sqlHelper::createConnection(void) {
+bool sqlHelper::createConnection(void)
+{
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
     db.setDatabaseName("Driver={SQL Server};Server=rosebloom.arvixe.com;Database=AnimeGuide");
     db.setUserName("umaine");
@@ -14,11 +15,13 @@ bool sqlHelper::createConnection(void) {
     return ok;
 }
 
-QSqlDatabase sqlHelper::getInstance(void) {
+QSqlDatabase sqlHelper::getInstance(void)
+{
     return this->db;
 }
 
-bool sqlHelper::closeConnection(void) {
+bool sqlHelper::closeConnection(void)
+{
     this->db.close();
 
 

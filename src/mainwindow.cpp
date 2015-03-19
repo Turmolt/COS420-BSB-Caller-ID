@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "sqlhelper.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -92,15 +93,18 @@ void MainWindow::on_Button_Contact_10_clicked()
     toggle_Contacts(9);
 }
 
-void MainWindow::on_Button_Close_clicked() {
+void MainWindow::on_Button_Close_clicked()
+{
     show_All();
 }
 
-void MainWindow::on_Button_Save_clicked() {
+void MainWindow::on_Button_Save_clicked()
+{
     show_All();
 }
 
-void MainWindow::toggle_Contacts(int contact_Number) {
+void MainWindow::toggle_Contacts(int contact_Number)
+{
     if (all_Buttons[contact_Number]->isChecked()) {
         hide_Others(contact_Number);
     } else {
@@ -108,7 +112,8 @@ void MainWindow::toggle_Contacts(int contact_Number) {
     }
 }
 
-void MainWindow::hide_Others(int contact_Number) {
+void MainWindow::hide_Others(int contact_Number)
+{
     all_Buttons[contact_Number]->setChecked(true);
 
     for (int i = 0; i < all_Buttons.size(); i++) {
@@ -121,7 +126,8 @@ void MainWindow::hide_Others(int contact_Number) {
     ui->widget_notes->show();
 }
 
-void MainWindow::show_All() {
+void MainWindow::show_All()
+{
     for (int i = 0; i < all_Buttons.size(); i++) {
         // Set all contact buttons as visible, and as unchecked
         all_Labels[i]->setVisible(true);
