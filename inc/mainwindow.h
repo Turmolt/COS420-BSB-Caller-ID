@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QVector>
+#include <QStack>
+#include <QString>
 
 
 namespace Ui
@@ -25,11 +27,13 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow *ui;
+        int displayed_Contact;
         void toggle_Contacts(int contact_Number);
-        void hide_Others(int contact_Number);
-        void show_All();
+        void display_Contact(int contact_Number);
+        void show_All(int contact_Number);
         QVector<QPushButton*> all_Buttons;
         QVector<QLabel*> all_Labels;
+        QVector<QStack<QString>* > contact_Notes;
 
     private slots:
         void on_Button_Contact_01_clicked();

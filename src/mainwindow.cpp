@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->widget_notes->setVisible(false);
 
+    // This vector should be populated with data from the database
     all_Buttons.push_back(ui->Button_Contact_01);
     all_Buttons.push_back(ui->Button_Contact_02);
     all_Buttons.push_back(ui->Button_Contact_03);
@@ -21,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     all_Buttons.push_back(ui->Button_Contact_09);
     all_Buttons.push_back(ui->Button_Contact_10);
 
+    // This vector should be populated with data from the database
     all_Labels.push_back(ui->label_Contact_01);
     all_Labels.push_back(ui->label_Contact_02);
     all_Labels.push_back(ui->label_Contact_03);
@@ -31,6 +33,18 @@ MainWindow::MainWindow(QWidget *parent) :
     all_Labels.push_back(ui->label_Contact_08);
     all_Labels.push_back(ui->label_Contact_09);
     all_Labels.push_back(ui->label_Contact_10);
+
+    // This vector should be populated with notes from the database
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
+    contact_Notes.push_back(new QStack<QString>);
 
     qDebug() << "Connecting to database...";
     sqlHelper sqlconn;
@@ -95,27 +109,43 @@ void MainWindow::on_Button_Contact_10_clicked()
 
 void MainWindow::on_Button_Close_clicked()
 {
-    show_All();
+    show_All(displayed_Contact);
 }
 
 void MainWindow::on_Button_Save_clicked()
 {
-    show_All();
+    show_All(displayed_Contact);
+
+    // Push the new note to the stack
+    contact_Notes[displayed_Contact]->push(ui->text_notes->toPlainText());
+    // Throw out the oldest notes if more than five
+    // Kind of a hack but it works
+    while (contact_Notes[displayed_Contact]->size() > 5) {
+        contact_Notes[displayed_Contact]->pop_front();
+    }
 }
 
 void MainWindow::toggle_Contacts(int contact_Number)
 {
+    // Use the structure from before
+    // Each button is a check box
     if (all_Buttons[contact_Number]->isChecked()) {
-        hide_Others(contact_Number);
+        display_Contact(contact_Number);
     } else {
-        show_All();
+        show_All(contact_Number);
     }
 }
 
-void MainWindow::hide_Others(int contact_Number)
+void MainWindow::display_Contact(int contact_Number)
 {
-    all_Buttons[contact_Number]->setChecked(true);
+    QStack<QString> temp_Stack;
+    QString temp_String;
 
+    all_Buttons[contact_Number]->setChecked(true);
+    // Record the current contact so the save button can reference it
+    displayed_Contact = contact_Number;
+
+    // Make all buttons and labels invisible
     for (int i = 0; i < all_Buttons.size(); i++) {
        if (i != contact_Number) {
            all_Labels[i]->setVisible(false);
@@ -123,13 +153,27 @@ void MainWindow::hide_Others(int contact_Number)
        }
     }
 
+    // Clear the notes box and populate it from the stack for the current contact
+    ui->text_log->clear();
+    while (!contact_Notes[contact_Number]->empty()) {
+        temp_String = contact_Notes[contact_Number]->pop();
+        ui->text_log->append(temp_String);
+        temp_Stack.push(temp_String);
+    }
+
+    // Move the elements back to the permanent stack
+    while (!temp_Stack.empty()) {
+        temp_String = temp_Stack.pop();
+        contact_Notes[contact_Number]->push(temp_String);
+    }
+
     ui->widget_notes->show();
 }
 
-void MainWindow::show_All()
+void MainWindow::show_All(int contact_Number)
 {
+    // Set all contact buttons as visible, and as unchecked
     for (int i = 0; i < all_Buttons.size(); i++) {
-        // Set all contact buttons as visible, and as unchecked
         all_Labels[i]->setVisible(true);
         all_Buttons[i]->setVisible(true);
         all_Buttons[i]->setChecked(false);
