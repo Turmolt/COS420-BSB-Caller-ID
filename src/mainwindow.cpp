@@ -61,51 +61,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_Button_Contact_01_clicked()
-{
-    toggle_Contacts(0);
-}
-
-void MainWindow::on_Button_Contact_02_clicked()
-{
-    toggle_Contacts(1);
-}
-void MainWindow::on_Button_Contact_03_clicked()
-{
-    toggle_Contacts(2);
-}
-
-void MainWindow::on_Button_Contact_04_clicked()
-{
-    toggle_Contacts(3);
-}
-
-void MainWindow::on_Button_Contact_05_clicked()
-{
-    toggle_Contacts(4);
-}
-
-void MainWindow::on_Button_Contact_06_clicked()
-{
-    toggle_Contacts(5);
-}
-void MainWindow::on_Button_Contact_07_clicked()
-{
-    toggle_Contacts(6);
-}
-void MainWindow::on_Button_Contact_08_clicked()
-{
-    toggle_Contacts(7);
-}
-void MainWindow::on_Button_Contact_09_clicked()
-{
-    toggle_Contacts(8);
-}
-
-void MainWindow::on_Button_Contact_10_clicked()
-{
-    toggle_Contacts(9);
-}
+void MainWindow::on_Button_Contact_01_clicked() { toggle_Contacts(0); }
+void MainWindow::on_Button_Contact_02_clicked() { toggle_Contacts(1); }
+void MainWindow::on_Button_Contact_03_clicked() { toggle_Contacts(2); }
+void MainWindow::on_Button_Contact_04_clicked() { toggle_Contacts(3); }
+void MainWindow::on_Button_Contact_05_clicked() { toggle_Contacts(4); }
+void MainWindow::on_Button_Contact_06_clicked() { toggle_Contacts(5); }
+void MainWindow::on_Button_Contact_07_clicked() { toggle_Contacts(6); }
+void MainWindow::on_Button_Contact_08_clicked() { toggle_Contacts(7); }
+void MainWindow::on_Button_Contact_09_clicked() { toggle_Contacts(8); }
+void MainWindow::on_Button_Contact_10_clicked() { toggle_Contacts(9); }
 
 void MainWindow::on_Button_Close_clicked()
 {
