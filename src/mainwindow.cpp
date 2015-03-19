@@ -114,8 +114,6 @@ void MainWindow::on_Button_Close_clicked()
 
 void MainWindow::on_Button_Save_clicked()
 {
-    show_All(displayed_Contact);
-
     // Push the new note to the stack
     contact_Notes[displayed_Contact]->push(ui->text_notes->toPlainText());
     // Throw out the oldest notes if more than five
@@ -123,6 +121,8 @@ void MainWindow::on_Button_Save_clicked()
     while (contact_Notes[displayed_Contact]->size() > 5) {
         contact_Notes[displayed_Contact]->pop_front();
     }
+
+    show_All(displayed_Contact);
 }
 
 void MainWindow::toggle_Contacts(int contact_Number)
@@ -155,6 +155,7 @@ void MainWindow::display_Contact(int contact_Number)
 
     // Clear the notes box and populate it from the stack for the current contact
     ui->text_log->clear();
+    ui->text_notes->clear();
     while (!contact_Notes[contact_Number]->empty()) {
         temp_String = contact_Notes[contact_Number]->pop();
         ui->text_log->append(temp_String);
