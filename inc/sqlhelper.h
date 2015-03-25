@@ -4,7 +4,8 @@
 #include <QtSql>
 
 
-class sqlHelper {
+class sqlHelper
+{
     public:
         bool createConnection(void);
         bool closeConnection(void);
@@ -16,4 +17,3 @@ class sqlHelper {
 
 
 #endif // SQLHELPER
-

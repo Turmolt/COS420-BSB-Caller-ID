@@ -50,7 +50,8 @@ MainWindow::MainWindow(QWidget *parent) :
     sqlHelper sqlconn;
     bool connResult = sqlconn.createConnection();
     QSqlDatabase db = sqlconn.getInstance();
-    if (!connResult) {
+    if (!connResult)
+    {
         qDebug() << "SQL Error" << db.lastError();
     }
     sqlconn.closeConnection();
@@ -92,9 +93,11 @@ void MainWindow::toggle_Contacts(int contact_Number)
 {
     // Use the structure from before
     // Each button is a check box
-    if (all_Buttons[contact_Number]->isChecked()) {
+    if (all_Buttons[contact_Number]->isChecked())
+    {
         show_Contact(contact_Number);
-    } else {
+    } else
+    {
         show_All();
     }
 }
@@ -106,8 +109,10 @@ void MainWindow::show_Contact(int contact_Number)
     displayed_Contact = contact_Number;
 
     // Make all buttons and labels invisible
-    for (int i = 0; i < all_Buttons.size(); i++) {
-       if (i != contact_Number) {
+    for (int i = 0; i < all_Buttons.size(); i++)
+    {
+       if (i != contact_Number)
+       {
            all_Labels[i]->setVisible(false);
            all_Buttons[i]->setVisible(false);
        }
@@ -121,7 +126,8 @@ void MainWindow::show_Contact(int contact_Number)
 void MainWindow::show_All(void)
 {
     // Set all contact buttons as visible, and as unchecked
-    for (int i = 0; i < all_Buttons.size(); i++) {
+    for (int i = 0; i < all_Buttons.size(); i++)
+    {
         all_Labels[i]->setVisible(true);
         all_Buttons[i]->setVisible(true);
         all_Buttons[i]->setChecked(false);
@@ -130,33 +136,39 @@ void MainWindow::show_All(void)
     ui->widget_notes->hide();
 }
 
-void MainWindow::add_Note(int contact_Number, QString note) {
-    if (note != 0) {
+void MainWindow::add_Note(int contact_Number, QString note)
+{
+    if (note != 0)
+    {
         contact_Notes[contact_Number]->push(note);
     }
 
     // Throw out the oldest notes if more than five
     // Kind of a hack but it works
-    while (contact_Notes[contact_Number]->size() > 5) {
+    while (contact_Notes[contact_Number]->size() > 5)
+    {
         contact_Notes[contact_Number]->pop_front();
     }
 }
 
-void MainWindow::refresh_Notes(int contact_Number) {
+void MainWindow::refresh_Notes(int contact_Number)
+{
     QStack<QString> temp_Stack;
     QString temp_String;
 
     // Clear the notes box and populate it from the stack for the current contact
     ui->text_log->clear();
     ui->text_notes->clear();
-    while (!contact_Notes[contact_Number]->empty()) {
+    while (!contact_Notes[contact_Number]->empty())
+    {
         temp_String = contact_Notes[contact_Number]->pop();
         ui->text_log->append(temp_String);
         temp_Stack.push(temp_String);
     }
 
     // Move the elements back to the permanent stack
-    while (!temp_Stack.empty()) {
+    while (!temp_Stack.empty())
+    {
         temp_String = temp_Stack.pop();
         contact_Notes[contact_Number]->push(temp_String);
     }
