@@ -80,13 +80,13 @@ void MainWindow::on_Button_Close_clicked()
 
 void MainWindow::on_Button_Save_clicked()
 {
-    QString temp_String;
-
-    temp_String = ui->text_notes->toPlainText();
-
-    // Push the new note to the stack and refresh the text box
-    add_Note(displayed_Contact, temp_String);
-    refresh_Notes(displayed_Contact);
+    //message
+    QString temp_String = ui->text_notes->toPlainText();
+    {
+        // Push the new note to the stack and refresh the text box
+        add_Note(displayed_Contact, temp_String);
+        refresh_Notes(displayed_Contact);
+    }
 }
 
 void MainWindow::toggle_Contacts(int contact_Number)
@@ -138,9 +138,15 @@ void MainWindow::show_All(void)
 
 void MainWindow::add_Note(int contact_Number, QString note)
 {
-    if (note != 0)
+    //Date infront of the message
+    QString temp_String;
+    temp_String += "[";
+    temp_String += QDate::currentDate().toString("M/d/yy");
+    temp_String += "]: ";
+
+    if (note.size() != 0)
     {
-        contact_Notes[contact_Number]->push(note);
+        contact_Notes[contact_Number]->push(temp_String + note + "\n");
     }
 
     // Throw out the oldest notes if more than five

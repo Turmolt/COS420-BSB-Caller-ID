@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>275</width>
-    <height>669</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>275</width>
-    <height>300</height>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>275</width>
-    <height>10000</height>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -48,29 +48,53 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">#centralWidget
+    <string notr="true">QPushButton:hover
 {
-background-color: grey;
+color: black;
+	background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 :   1, stop :   0.0 #003399,
+                stop :   0.5 #879fff, stop :   0.55 #14d2ff, stop :   1.0 #003399);
+	
 }
 
-QPushButton {
-	color: white;
-	border: 1px solid black;
-	border-radius: 3px;
-	background: #275FBA;
+QPushButton 
+{
+border: 1px solid #6593cf;
+border-radius: 2px;
+padding: 5px 15px 2px 5px;
+font: bold large &quot;Arial&quot;;
+height: 35px;   
+background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 :   1, stop :   0.0 #f5f9ff,
+                stop :   0.5 #c7dfff, stop :   0.55 #afd2ff, stop :   1.0 #c0dbff);
+        color: #006aff;
 }
 
-QPushButton::pressed
+QPushButton:pressed 
 {
-	color: white;
-	border: 3px solid black;
-	border-radius: 6px;
-	background: red;
+/*background: qlineargradient(x1 : 0, y1 : 0, x2 : 0, y2 :   1, stop :   0.0 #f5f9ff,
+                stop :   0.5 #c7dfff, stop :   0.55 #afd2ff, stop :   1.0 #c0dbff);
+*/
+       
+
+background:grey;
+
+		color: #006aff;
+        padding-top: 2px;
+        padding-left: 3px;
+}
+
+
+
+
+
+#centralWidget
+{
+background-color: white;
 }
 
 QTextEdit
 {
-	background: #959595;
+color:white;
+	background: grey;
 
 }
 
@@ -97,11 +121,20 @@ QTextEdit
        <bool>false</bool>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <property name="topMargin">
-        <number>0</number>
+       <property name="leftMargin">
+        <number>5</number>
        </property>
-       <property name="verticalSpacing">
-        <number>6</number>
+       <property name="topMargin">
+        <number>5</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <property name="spacing">
+        <number>5</number>
        </property>
        <item row="1" column="1">
         <widget class="QTextEdit" name="textEdit_number">
@@ -114,6 +147,12 @@ QTextEdit
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="minimumSize">
+          <size>
+           <width>500</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>20</pointsize>
@@ -124,6 +163,9 @@ QTextEdit
          </property>
          <property name="verticalScrollBarPolicy">
           <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -162,13 +204,13 @@ QTextEdit
         <number>5</number>
        </property>
        <property name="leftMargin">
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="topMargin">
         <number>5</number>
        </property>
        <property name="rightMargin">
-        <number>9</number>
+        <number>12</number>
        </property>
        <property name="bottomMargin">
         <number>5</number>
@@ -189,7 +231,10 @@ QTextEdit
          </property>
          <property name="font">
           <font>
-           <kerning>true</kerning>
+           <family>Arial</family>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
           </font>
          </property>
          <property name="focusPolicy">
@@ -208,6 +253,12 @@ QTextEdit
        </item>
        <item>
         <widget class="QLabel" name="label_Contact_01">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text">
           <string>D.O.B / SSN</string>
          </property>
@@ -522,20 +573,27 @@ QTextEdit
           </sizepolicy>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>5</number>
+          </property>
           <property name="leftMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="topMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="rightMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
-           <widget class="QTextEdit" name="textEdit"/>
+           <widget class="QTextEdit" name="textEdit">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_notes">
@@ -545,7 +603,17 @@ QTextEdit
            </widget>
           </item>
           <item>
-           <widget class="QTextEdit" name="text_log"/>
+           <widget class="QTextEdit" name="text_log">
+            <property name="contextMenuPolicy">
+             <enum>Qt::DefaultContextMenu</enum>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhMultiLine</set>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QTextEdit" name="text_notes">
@@ -564,8 +632,18 @@ QTextEdit
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>40</height>
+              <height>50</height>
              </size>
+            </property>
+            <property name="toolTip">
+             <string/>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background:#BABABA;
+color:black;</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhMultiLine</set>
             </property>
            </widget>
           </item>
@@ -573,6 +651,12 @@ QTextEdit
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
              <widget class="QPushButton" name="Button_Close">
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="text">
                <string>Close</string>
               </property>
