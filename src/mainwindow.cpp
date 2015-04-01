@@ -140,9 +140,7 @@ void MainWindow::add_Note(int contact_Number, QString note)
 {
     //Date infront of the message
     QString temp_String;
-    temp_String += "[";
-    temp_String += QDate::currentDate().toString("M/d/yy");
-    temp_String += "]: ";
+    temp_String += "[" + QDate::currentDate().toString("MM/dd/yy") + "]: ";
 
     if (note.size() != 0)
     {
