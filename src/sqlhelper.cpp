@@ -3,6 +3,11 @@
 #include "sqlhelper.h"
 
 
+sqlHelper::~sqlHelper()
+{
+    closeConnection();
+}
+
 bool sqlHelper::createConnection(void)
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
@@ -22,6 +27,7 @@ QSqlDatabase sqlHelper::getInstance(void)
 
 bool sqlHelper::closeConnection(void)
 {
+    qDebug() << "closeConnection() called";
     this->db.close();
 
 
