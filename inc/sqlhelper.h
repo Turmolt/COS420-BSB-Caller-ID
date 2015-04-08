@@ -11,6 +11,8 @@ class sqlHelper
         bool createConnection(void);
         bool closeConnection(void);
         QSqlDatabase getInstance(void);
+        void populate_Notes(void);
+        void update_Notes(void);
 
     private:
         QSqlDatabase db;

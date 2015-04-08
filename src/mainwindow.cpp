@@ -47,14 +47,14 @@ MainWindow::MainWindow(QWidget *parent) :
     contact_Notes.push_back(new QStack<QString>);
 
     qDebug() << "Connecting to database...";
-    sqlHelper sqlconn;
-    bool connResult = sqlconn.createConnection();
-    QSqlDatabase db = sqlconn.getInstance();
+    bool connResult = dbconn.createConnection();
+    QSqlDatabase db = dbconn.getInstance();
     if (!connResult)
     {
         qDebug() << "SQL Error" << db.lastError();
     }
-    sqlconn.closeConnection();
+
+    populate_Contacts();
 }
 
 MainWindow::~MainWindow()
@@ -80,12 +80,10 @@ void MainWindow::on_Button_Close_clicked()
 
 void MainWindow::on_Button_Save_clicked()
 {
-    //message
     QString temp_String = ui->text_notes->toPlainText();
     {
         // Push the new note to the stack and refresh the text box
         add_Note(displayed_Contact, temp_String);
-        refresh_Notes(displayed_Contact);
     }
 }
 
@@ -134,11 +132,13 @@ void MainWindow::show_All(void)
     }
 
     ui->widget_notes->hide();
+
+    populate_Contacts();
 }
 
 void MainWindow::add_Note(int contact_Number, QString note)
 {
-    //Date infront of the message
+    // Date in front of the message
     QString temp_String;
     temp_String += "[" + QDate::currentDate().toString("MM/dd/yy") + "]: ";
 
@@ -153,6 +153,8 @@ void MainWindow::add_Note(int contact_Number, QString note)
     {
         contact_Notes[contact_Number]->pop_front();
     }
+
+    refresh_Notes(contact_Number);
 }
 
 void MainWindow::refresh_Notes(int contact_Number)
@@ -176,4 +178,46 @@ void MainWindow::refresh_Notes(int contact_Number)
         temp_String = temp_Stack.pop();
         contact_Notes[contact_Number]->push(temp_String);
     }
+}
+
+void MainWindow::populate_Contacts(void)
+{
+    QSqlDatabase db = dbconn.getInstance();
+    QSqlQuery query(db);
+    int size = 0;
+    QString name = "";
+    QString dob_ss = "";
+
+    query.exec("select c.FirstName, c.LastName, c.TaxID, c.DateOfBirth, co.Contact, lo.Value, acc.AccountNumber, loo.Value from dbo.Customers c left join dbo.Contacts co on c.id = co.CustomerID left join dbo.Lookups lo on lo.ID = co.ContactTypeID left join dbo.Accounts acc on acc.CustomerID = c.id left join dbo.Lookups loo on loo.ID = acc.AccountTypeID where co.Contact ='5158641478'");
+    query.last();
+    size = query.at() + 1;
+    qDebug() << size << " records";
+
+    query.first();
+    for (int i = 0; i < all_Buttons.size(); i++) {
+        if (i < size)
+        {
+            all_Buttons[i]->setVisible(true);
+            all_Labels[i]->setVisible(true);
+
+            name = query.value(1).toString();
+            name += " " + query.value(2).toString();
+            all_Buttons[i]->setText(name);
+
+            dob_ss = query.value(4).toString();
+            dob_ss += " / " + query.value(3).toString();
+            all_Labels[i]->setText(dob_ss);
+
+            query.next();
+        } else
+        {
+            all_Buttons[i]->setVisible(false);
+            all_Labels[i]->setVisible(false);
+        }
+    }
+}
+
+void MainWindow::update_Notes(void)
+{
+    QSqlDatabase db = dbconn.getInstance();
 }

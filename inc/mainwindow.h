@@ -8,6 +8,8 @@
 #include <QStack>
 #include <QString>
 
+#include "sqlhelper.h"
+
 
 namespace Ui
 {
@@ -33,9 +35,12 @@ class MainWindow : public QMainWindow
         void show_All(void);
         void add_Note(int contact_Number, QString note);
         void refresh_Notes(int contact_Number);
+        void populate_Contacts(void);
+        void update_Notes(void);
         QVector<QPushButton*> all_Buttons;
         QVector<QLabel*> all_Labels;
         QVector<QStack<QString>* > contact_Notes;
+        sqlHelper dbconn;
 
     private slots:
         void on_Button_Contact_01_clicked();
