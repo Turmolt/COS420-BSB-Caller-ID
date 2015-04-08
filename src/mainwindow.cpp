@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "androidreciever.h"
 #include "sqlhelper.h"
 #include "ui_mainwindow.h"
 
@@ -54,9 +53,6 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         qDebug() << "SQL Error" << db.lastError();
     }
-
-    androidReciever android(this, this);
-    android.startServer();
 }
 
 MainWindow::~MainWindow()
@@ -118,6 +114,8 @@ void MainWindow::show_Contact(int contact_Number)
        }
     }
 
+    all_Shown = false;
+
     refresh_Notes(contact_Number);
 
     ui->widget_notes->show();
@@ -128,10 +126,21 @@ void MainWindow::show_All(void)
     // Set all contact buttons as visible, and as unchecked
     for (int i = 0; i < all_Buttons.size(); i++)
     {
-        all_Labels[i]->setVisible(true);
-        all_Buttons[i]->setVisible(true);
-        all_Buttons[i]->setChecked(false);
+        if (i < num_Contacts)
+        {
+            all_Labels[i]->setVisible(true);
+            all_Buttons[i]->setVisible(true);
+            all_Buttons[i]->setChecked(false);
+        }
+        else
+        {
+            all_Labels[i]->setVisible(false);
+            all_Buttons[i]->setVisible(false);
+            all_Buttons[i]->setChecked(false);
+        }
     }
+
+    all_Shown = true;
 
     ui->widget_notes->hide();
 }

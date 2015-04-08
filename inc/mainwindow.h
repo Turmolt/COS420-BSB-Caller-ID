@@ -26,6 +26,9 @@ class MainWindow : public QMainWindow
         QVector<QPushButton*> all_Buttons;
         QVector<QLabel*> all_Labels;
         QVector<QStack<QString>* > contact_Notes;
+        bool all_Shown;
+        int num_Contacts;
+        int displayed_Contact;
         sqlHelper dbconn;
 
     public slots:
@@ -33,7 +36,6 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow *ui;
-        int displayed_Contact;
         void toggle_Contacts(int contact_Number);
         void show_Contact(int contact_Number);
         void show_All(void);

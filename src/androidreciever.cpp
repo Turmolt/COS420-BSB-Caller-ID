@@ -14,9 +14,9 @@ androidReciever::androidReciever(QObject *parent, MainWindow *w) :
 
 void androidReciever::startServer()
 {
-    int port = 8888;
+    int port = 23;
 
-    if (!this->listen(QHostAddress::Any,port))
+    if (!this->listen(QHostAddress::Any, port))
     {
         qDebug() << "Server could not start.";
     }
