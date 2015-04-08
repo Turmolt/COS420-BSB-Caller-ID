@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT       += sql
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,10 +18,14 @@ OBJECTS_DIR = obj
 
 SOURCES += src/main.cpp \
            src/mainwindow.cpp \
-           src/sqlhelper.cpp
+           src/sqlhelper.cpp \
+    src/androidreciever.cpp \
+    src/athread.cpp
 
 HEADERS += inc/mainwindow.h \
-           inc/sqlhelper.h
+           inc/sqlhelper.h \
+    inc/androidreciever.h \
+    inc/athread.h
 
 FORMS   += ui/mainwindow.ui \
 

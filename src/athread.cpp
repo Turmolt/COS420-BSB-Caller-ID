@@ -2,6 +2,7 @@
 
 #include <QDebug>
 
+
 aThread::aThread(qintptr ID,QObject *parent) :
     QThread(parent)
 {
@@ -32,7 +33,6 @@ void aThread::run()
     qDebug() << socketDescriptor << " Client connected";
 
     exec();
-
 }
 
 void aThread::readyRead()
@@ -43,13 +43,14 @@ void aThread::readyRead()
     qDebug() << "Data: " << data;
 
     socket->write(data);
-
 }
 
 void aThread::disconnected()
 {
-    qDebug()<<socketDescriptor<<" disconnected.";
+    qDebug() << socketDescriptor << " disconnected.";
 
     socket->deleteLater();
+
+
     exit(0);
 }
