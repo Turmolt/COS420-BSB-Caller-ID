@@ -1,6 +1,7 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "androidreciever.h"
 #include "sqlhelper.h"
+#include "ui_mainwindow.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -54,7 +55,8 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug() << "SQL Error" << db.lastError();
     }
 
-    populate_Contacts();
+    androidReciever android(this, this);
+    android.startServer();
 }
 
 MainWindow::~MainWindow()
@@ -132,8 +134,6 @@ void MainWindow::show_All(void)
     }
 
     ui->widget_notes->hide();
-
-    populate_Contacts();
 }
 
 void MainWindow::add_Note(int contact_Number, QString note)
@@ -177,43 +177,6 @@ void MainWindow::refresh_Notes(int contact_Number)
     {
         temp_String = temp_Stack.pop();
         contact_Notes[contact_Number]->push(temp_String);
-    }
-}
-
-void MainWindow::populate_Contacts(void)
-{
-    QSqlDatabase db = dbconn.getInstance();
-    QSqlQuery query(db);
-    int size = 0;
-    QString name = "";
-    QString dob_ss = "";
-
-    query.exec("select c.FirstName, c.LastName, c.TaxID, c.DateOfBirth, co.Contact, lo.Value, acc.AccountNumber, loo.Value from dbo.Customers c left join dbo.Contacts co on c.id = co.CustomerID left join dbo.Lookups lo on lo.ID = co.ContactTypeID left join dbo.Accounts acc on acc.CustomerID = c.id left join dbo.Lookups loo on loo.ID = acc.AccountTypeID where co.Contact ='5158641478'");
-    query.last();
-    size = query.at() + 1;
-    qDebug() << size << " records";
-
-    query.first();
-    for (int i = 0; i < all_Buttons.size(); i++) {
-        if (i < size)
-        {
-            all_Buttons[i]->setVisible(true);
-            all_Labels[i]->setVisible(true);
-
-            name = query.value(1).toString();
-            name += " " + query.value(2).toString();
-            all_Buttons[i]->setText(name);
-
-            dob_ss = query.value(4).toString();
-            dob_ss += " / " + query.value(3).toString();
-            all_Labels[i]->setText(dob_ss);
-
-            query.next();
-        } else
-        {
-            all_Buttons[i]->setVisible(false);
-            all_Labels[i]->setVisible(false);
-        }
     }
 }
 

@@ -1,14 +1,15 @@
 #include "androidreciever.h"
+#include "mainwindow.h"
 #include <QString>
 
 
 static QString incNumb;
 bool messaged = false;
 
-androidReciever::androidReciever(QObject *parent) :
+androidReciever::androidReciever(QObject *parent, MainWindow *w) :
     QTcpServer(parent)
 {
-
+    this->window = w;
 }
 
 void androidReciever::startServer()
@@ -27,14 +28,14 @@ void androidReciever::startServer()
 
 void androidReciever::incomingConnection(qintptr socketDescriptor)
 {
-    qDebug()<<socketDescriptor<<" Connecting...";
+    qDebug() << socketDescriptor << " Connecting...";
 
     //Run new connection in a new thread :)
-    aThread *thread = new aThread(socketDescriptor, this);
+    aThread *thread = new aThread(socketDescriptor, this, window);
 
     //connect the signal to the slot
 
-    connect(thread,SIGNAL(finished()), thread, SLOT(deleteLater()));
+    connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
 
     thread->run();
 }
