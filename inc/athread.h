@@ -18,9 +18,6 @@ public:
     explicit aThread(qintptr ID, QObject *parent = 0, MainWindow *w = NULL);
     void run();
 
-private:
-    void populate_Contacts(QString phone_Number);
-
 signals:
     void error(QTcpSocket::SocketError socketError);
     void valueChanged(QString);

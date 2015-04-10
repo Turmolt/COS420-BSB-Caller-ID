@@ -20,12 +20,14 @@ SOURCES += src/main.cpp \
            src/mainwindow.cpp \
            src/sqlhelper.cpp \
     src/androidreciever.cpp \
-    src/athread.cpp
+    src/athread.cpp \
+    src/contact.cpp
 
 HEADERS += inc/mainwindow.h \
            inc/sqlhelper.h \
     inc/androidreciever.h \
-    inc/athread.h
+    inc/athread.h \
+    inc/contact.h
 
 FORMS   += ui/mainwindow.ui \
 

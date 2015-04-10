@@ -9,6 +9,7 @@
 #include <QString>
 
 #include "sqlhelper.h"
+#include "contact.h"
 
 
 namespace Ui
@@ -23,9 +24,14 @@ class MainWindow : public QMainWindow
     public:
         explicit MainWindow(QWidget *parent = 0);
         ~MainWindow();
+
+        void populate_Contacts(QString phone_Number);
+        void display_Contacts(void);
+        void show_All(void);
+
+        QVector<contact> contacts;
         QVector<QPushButton*> all_Buttons;
         QVector<QLabel*> all_Labels;
-        QVector<QStack<QString>* > contact_Notes;
         bool all_Shown;
         int num_Contacts;
         int displayed_Contact;
@@ -38,7 +44,6 @@ class MainWindow : public QMainWindow
         Ui::MainWindow *ui;
         void toggle_Contacts(int contact_Number);
         void show_Contact(int contact_Number);
-        void show_All(void);
         void add_Note(int contact_Number, QString note);
         void refresh_Notes(int contact_Number);
         void update_Notes(void);
