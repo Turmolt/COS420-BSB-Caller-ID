@@ -35,12 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     all_Labels.push_back(ui->label_Contact_09);
     all_Labels.push_back(ui->label_Contact_10);
 
-    contact temp = contact(all_Buttons[0], all_Labels[0], ui->text_log);
-    temp.date_Of_Birth = "testerino";
-    temp.social_Security = "teeesster";
-    temp.name = "chadliwinks";
-    contacts.push_back(temp);
-
     qDebug() << "Connecting to database...";
     bool connResult = dbconn.createConnection();
     QSqlDatabase db = dbconn.getInstance();
@@ -48,6 +42,8 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         qDebug() << "SQL Error" << db.lastError();
     }
+
+    hide_All();
 }
 
 MainWindow::~MainWindow()
@@ -81,6 +77,13 @@ void MainWindow::on_Button_Save_clicked()
     refresh_Notes(displayed_Contact);
 }
 
+void MainWindow::on_Button_Clear_clicked() {
+    qDebug() << "on_Button_Clear_clicked()";
+
+    ui->textEdit_number->clear();
+    hide_All();
+}
+
 void MainWindow::toggle_Contacts(int contact_Number)
 {
     // Use the structure from before
@@ -96,24 +99,20 @@ void MainWindow::toggle_Contacts(int contact_Number)
 
 void MainWindow::show_Contact(int contact_Number)
 {
+    displayed_Contact = contact_Number;
+
     contacts[contact_Number].pbutton->setChecked(true);
     // Record the current contact so the save button can reference it
-    displayed_Contact = contact_Number;
 
     // Make all buttons and labels invisible
     // except the pressed button
     for (int i = 0; i < all_Buttons.size(); i++)
     {
-        if (i < contacts.size())
-        {
-            contacts[contact_Number].setVisible(i == contact_Number);
-        } else
-        {
-            all_Buttons[i]->setVisible(false);
-            all_Labels[i]->setVisible(false);
-        }
+        all_Buttons[i]->setVisible(false);
+        all_Labels[i]->setVisible(false);
     }
 
+    contacts[contact_Number].setVisible(true);
 
     ui->widget_notes->setVisible(true);
 
@@ -125,11 +124,24 @@ void MainWindow::show_Contact(int contact_Number)
 void MainWindow::show_All(void)
 {
     // Set all contact buttons as visible, and as unchecked
+    for (int i = 0; i < contacts.size(); i++)
+    {
+        contacts[i].setVisible(true);
+        contacts[i].pbutton->setChecked(false);
+    }
+
+    all_Shown = true;
+
+    ui->widget_notes->hide();
+}
+
+void MainWindow::hide_All(void)
+{
     for (int i = 0; i < all_Buttons.size(); i++)
     {
         all_Buttons[i]->setChecked(false);
-        all_Buttons[i]->setVisible(true);
-        all_Labels[i]->setVisible(true);
+        all_Buttons[i]->setVisible(false);
+        all_Labels[i]->setVisible(false);
     }
 
     all_Shown = true;
@@ -188,7 +200,7 @@ void MainWindow::populate_Contacts(QString phone_Number)
     query.first();
     for (int i = 0; i < size; i++)
     {
-        contact temp = contact(all_Buttons[i], all_Labels[i], ui->text_notes);
+        contact temp = contact(all_Buttons[i], all_Labels[i], ui->textEdit);
 
         name = query.value(0).toString();
         name += " " + query.value(1).toString();
@@ -207,5 +219,16 @@ void MainWindow::populate_Contacts(QString phone_Number)
 
 void MainWindow::display_Contacts(void)
 {
+    for (int i = 0; i < contacts.size(); i++)
+    {
+        contacts[i].plabel->setText(contacts[i].social_Security + " / " + contacts[i].date_Of_Birth);
+        contacts[i].pbutton->setText(contacts[i].name);
+        contacts[i].setVisible(true);
+    }
+}
 
+void MainWindow::set_Number(QString number)
+{
+    ui->textEdit_number->setText(number);
+    qDebug() << "number is " << number;
 }

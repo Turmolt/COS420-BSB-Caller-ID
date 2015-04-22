@@ -46,8 +46,8 @@ void aThread::readyRead()
     qDebug() << "Data: " << data;
 
     window->populate_Contacts(QString(data.data()));
-    window->populate_Contacts("2078526155");
     window->display_Contacts();
+    window->set_Number(QString(data.data()));
 
     socket->write(data);
 }

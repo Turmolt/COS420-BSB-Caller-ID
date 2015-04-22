@@ -43,3 +43,6 @@ Debug:OBJECTS_DIR = bld/debug/.obj
 Debug:MOC_DIR = bld/debug/.moc
 Debug:RCC_DIR = bld/debug/.rcc
 Debug:UI_DIR = bld/debug/.ui
+
+RESOURCES += \
+    graphics/bsb_logo.qrc

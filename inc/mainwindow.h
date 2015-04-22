@@ -28,6 +28,8 @@ class MainWindow : public QMainWindow
         void populate_Contacts(QString phone_Number);
         void display_Contacts(void);
         void show_All(void);
+        void hide_All(void);
+        void set_Number(QString number);
 
         QVector<contact> contacts;
         QVector<QPushButton*> all_Buttons;
@@ -61,6 +63,7 @@ class MainWindow : public QMainWindow
         void on_Button_Contact_10_clicked();
         void on_Button_Close_clicked();
         void on_Button_Save_clicked();
+        void on_Button_Clear_clicked();
 
 };
 
