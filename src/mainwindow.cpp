@@ -82,6 +82,8 @@ void MainWindow::on_Button_Clear_clicked() {
 
     ui->textEdit_number->clear();
     hide_All();
+
+    ui->label_NoContact->show();
 }
 
 void MainWindow::toggle_Contacts(int contact_Number)
@@ -179,6 +181,8 @@ void MainWindow::update_Notes(void)
 
 void MainWindow::populate_Contacts(QString phone_Number)
 {
+    contacts.clear();
+
     QSqlDatabase db = dbconn.getInstance();
     int size = 0;
     QString name = "";
@@ -200,7 +204,8 @@ void MainWindow::populate_Contacts(QString phone_Number)
     query.first();
     for (int i = 0; i < size; i++)
     {
-        contact temp = contact(all_Buttons[i], all_Labels[i], ui->textEdit);
+        // Get accounts for contact
+        contact temp = contact(all_Buttons[i], all_Labels[i], ui->text_log, ui->textEdit_CIF);
 
         name = query.value(0).toString();
         name += " " + query.value(1).toString();
@@ -214,6 +219,11 @@ void MainWindow::populate_Contacts(QString phone_Number)
         contacts.push_back(temp);
 
         query.next();
+    }
+
+    if (size != 0)
+    {
+        ui->label_NoContact->hide();
     }
 }
 

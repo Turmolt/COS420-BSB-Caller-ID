@@ -14,7 +14,7 @@ class contact
 {
 public:
     contact();
-    contact(QPushButton *button, QLabel *label, QTextEdit *notes);
+    contact(QPushButton *button, QLabel *label, QTextEdit *notes, QTextEdit *CIF);
     ~contact();
 
     void add_Note(QString note);
@@ -28,6 +28,7 @@ public:
     QPushButton *pbutton;
     QLabel *plabel;
     QTextEdit *pnotes;
+    QTextEdit *pCIF;
 };
 
 #endif // CONTACT_H

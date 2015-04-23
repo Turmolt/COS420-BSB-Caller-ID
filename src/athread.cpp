@@ -45,6 +45,7 @@ void aThread::readyRead()
 
     qDebug() << "Data: " << data;
 
+    window->hide_All();
     window->populate_Contacts(QString(data.data()));
     window->display_Contacts();
     window->set_Number(QString(data.data()));
