@@ -7,11 +7,12 @@ contact::contact()
 {
 }
 
-contact::contact(QPushButton *button, QLabel *label, QTextEdit *notes)
+contact::contact(QPushButton *button, QLabel *label, QTextEdit *notes, QTextEdit *CIF)
 {
     this->pbutton = button;
     this->plabel = label;
     this->pnotes = notes;
+    this->pCIF = cif;
 
     this->notes = QStack<QString>();
 }
