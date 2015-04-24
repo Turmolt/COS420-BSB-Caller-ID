@@ -157,8 +157,14 @@ color:white;
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
          <property name="text">
-          <string>Clear</string>
+          <string>  Clear</string>
          </property>
         </widget>
        </item>
@@ -257,6 +263,9 @@ color:black;</string>
          </property>
          <property name="text">
           <string>No Contact Available</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -641,7 +650,8 @@ color:black;</string>
             <property name="styleSheet">
              <string notr="true">background-color: white;
 border: 1px solid blue;
-border-radius: 1px;</string>
+border-radius: 1px;
+color: black;</string>
             </property>
             <property name="readOnly">
              <bool>true</bool>

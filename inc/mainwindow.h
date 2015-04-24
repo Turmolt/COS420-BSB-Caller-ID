@@ -48,7 +48,7 @@ class MainWindow : public QMainWindow
         void show_Contact(int contact_Number);
         void add_Note(int contact_Number, QString note);
         void refresh_Notes(int contact_Number);
-        void update_Notes(void);
+        void update_Notes(int contact_Number);
 
     private slots:
         void on_Button_Contact_01_clicked();

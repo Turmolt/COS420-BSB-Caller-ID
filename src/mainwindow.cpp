@@ -3,6 +3,8 @@
 #include "ui_mainwindow.h"
 #include "contact.h"
 
+#include <QtConcurrent/QtConcurrent>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -74,7 +76,11 @@ void MainWindow::on_Button_Save_clicked()
         // Push the new note to the stack and refresh the text box
         contacts[displayed_Contact].add_Note(temp_String);
     }
+
     refresh_Notes(displayed_Contact);
+
+    extern void update_Notes(int contact_Number);
+    QtConcurrent::run(this, this->update_Notes, displayed_Contact);
 }
 
 void MainWindow::on_Button_Clear_clicked() {
@@ -112,6 +118,13 @@ void MainWindow::show_Contact(int contact_Number)
     {
         all_Buttons[i]->setVisible(false);
         all_Labels[i]->setVisible(false);
+    }
+
+    contacts[contact_Number].pCIF->clear();
+    for (int i = 0; i < contacts[contact_Number].account_Number.size(); i++)
+    {
+        QString accountsinfo = contacts[contact_Number].account_Type[i] + " / " + contacts[contact_Number].account_Number[i];
+        contacts[contact_Number].pCIF->append(accountsinfo);
     }
 
     contacts[contact_Number].setVisible(true);
@@ -174,11 +187,6 @@ void MainWindow::refresh_Notes(int contact_Number)
     }
 }
 
-void MainWindow::update_Notes(void)
-{
-    QSqlDatabase db = dbconn.getInstance();
-}
-
 void MainWindow::populate_Contacts(QString phone_Number)
 {
     contacts.clear();
@@ -189,36 +197,63 @@ void MainWindow::populate_Contacts(QString phone_Number)
     QString dob = "";
     QString ss = "";
 
-    QSqlQuery query(db);
-    query.prepare("select c.FirstName, c.LastName, c.TaxID, c.DateOfBirth, co.Contact, lo.Value as ContactType, acc.AccountNumber, loo.Value as AccountType, c.Notes from dbo.Customers c left join dbo.Contacts co on c.id = co.CustomerID left join dbo.Lookups lo on lo.ID = co.ContactTypeID left join dbo.Accounts acc on acc.CustomerID = c.id left join dbo.Lookups loo on loo.ID = acc.AccountTypeID where c.TaxID in ( select c.TaxID from dbo.Customers c left join dbo.Contacts co on c.id = co.CustomerID left join dbo.Lookups lo on lo.ID = co.ContactTypeID where co.Contact = :phone_Number)");
-    query.bindValue(":phone_Number", phone_Number);
-    query.exec();
+    QSqlQuery mainquery(db);
+    //                          0           1           2       3               4           5                       6       7           8       9           10
+    mainquery.prepare("select c.FirstName, c.LastName, c.TaxID, c.DateOfBirth, co.Contact, lo.Value as ContactType, c.Notes, c.Notes1, c.Notes2, c.Notes3, c.Notes4 from dbo.Customers c left join dbo.Contacts co on c.id = co.CustomerID left join dbo.Lookups lo on lo.ID = co.ContactTypeID where c.TaxID in ( select c.TaxID from dbo.Customers c left join dbo.Contacts co on c.id = co.CustomerID left join dbo.Lookups lo on lo.ID = co.ContactTypeID where co.Contact = :phone_Number)");
+    mainquery.bindValue(":phone_Number", phone_Number);
+    mainquery.exec();
 
     // Get the number of contacts
-    query.last();
-    size = query.at() + 1;
+    mainquery.last();
+    size = mainquery.at() + 1;
     qDebug() << size << " records";
     num_Contacts = size;
 
     // Iterate through all ten contact spaces
-    query.first();
+    mainquery.first();
     for (int i = 0; i < size; i++)
     {
         // Get accounts for contact
         contact temp = contact(all_Buttons[i], all_Labels[i], ui->text_log, ui->textEdit_CIF);
 
-        name = query.value(0).toString();
-        name += " " + query.value(1).toString();
+        name = mainquery.value(0).toString();
+        name += " " + mainquery.value(1).toString();
         temp.name = name;
 
-        ss = query.value(2).toString();
-        dob = query.value(3).toString();
+        ss = mainquery.value(2).toString();
+        dob = mainquery.value(3).toString();
         temp.social_Security = ss;
         temp.date_Of_Birth = dob;
 
+        // Get accounts for contact
+        //                                    0           1
+        QSqlQuery accountsquery(db);
+        accountsquery.prepare("select  look.Value, acc.AccountNumber from dbo.Accounts acc left join dbo.Customers cust on cust.ID = acc.customerID join dbo.Lookups look on look.ID = acc.AccountTypeID where cust.TaxID = :tax_ID");
+        accountsquery.bindValue(":tax_ID", ss);
+        accountsquery.exec();
+
+        int accountssize = 0;
+        accountsquery.last();
+        accountssize = accountsquery.at() + 1;
+        qDebug() << accountssize << " records";
+
+        accountsquery.first();
+        for (int i = 0; i < accountssize; i++)
+        {
+            temp.account_Type.push_back(accountsquery.value(0).toString());
+            temp.account_Number.push_back(accountsquery.value(1).toString());
+
+            accountsquery.next();
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            temp.notes.push_back(mainquery.value(i + 6).toString());
+        }
+
         contacts.push_back(temp);
 
-        query.next();
+        mainquery.next();
     }
 
     if (size != 0)
@@ -241,4 +276,21 @@ void MainWindow::set_Number(QString number)
 {
     ui->textEdit_number->setText(number);
     qDebug() << "number is " << number;
+}
+
+void MainWindow::update_Notes(int contact_Number)
+{
+    QSqlDatabase db = dbconn.getInstance();
+    QSqlQuery query(db);
+
+    query.prepare("UPDATE Customers SET Notes=:note0, Notes1=:note1, Notes2=:note2, Notes3=:note3, Notes4=:note4 WHERE TaxID=:tax_ID");
+    for (int i = 0; i < contacts[contact_Number].notes.size(); i++)
+    {
+        QString notes;
+        query.bindValue(notes.sprintf(":note%d", i), contacts[contact_Number].notes[i]);
+    }
+    query.bindValue(":tax_ID", contacts[contact_Number].social_Security);
+    query.exec();
+
+    qDebug() << "updating notes...";
 }

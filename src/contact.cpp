@@ -12,7 +12,7 @@ contact::contact(QPushButton *button, QLabel *label, QTextEdit *notes, QTextEdit
     this->pbutton = button;
     this->plabel = label;
     this->pnotes = notes;
-    this->pCIF = cif;
+    this->pCIF = CIF;
 
     this->notes = QStack<QString>();
 }

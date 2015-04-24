@@ -23,6 +23,8 @@ public:
     QString phone_Number;
     QString date_Of_Birth;
     QString social_Security;
+    QVector<QString> account_Type;
+    QVector<QString> account_Number;
     QStack<QString> notes;
 
     QPushButton *pbutton;
