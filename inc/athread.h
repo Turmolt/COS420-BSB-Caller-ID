@@ -1,7 +1,7 @@
 #ifndef ATHREAD_H
 #define ATHREAD_H
 
-#include "androidreciever.h"
+#include "androidreceiver.h"
 #include "mainwindow.h"
 #include <QThread>
 #include <QTextEdit>

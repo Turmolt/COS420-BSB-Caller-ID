@@ -1,4 +1,4 @@
-#include "androidreciever.h"
+#include "androidreceiver.h"
 #include "mainwindow.h"
 #include <QString>
 
@@ -6,13 +6,13 @@
 static QString incNumb;
 bool messaged = false;
 
-androidReciever::androidReciever(QObject *parent, MainWindow *w) :
+androidReceiver::androidReceiver(QObject *parent, MainWindow *w) :
     QTcpServer(parent)
 {
     this->window = w;
 }
 
-void androidReciever::startServer()
+void androidReceiver::startServer()
 {
     int port = 23;
 
@@ -26,7 +26,7 @@ void androidReciever::startServer()
     }
 }
 
-void androidReciever::incomingConnection(qintptr socketDescriptor)
+void androidReceiver::incomingConnection(qintptr socketDescriptor)
 {
     qDebug() << socketDescriptor << " Connecting...";
 

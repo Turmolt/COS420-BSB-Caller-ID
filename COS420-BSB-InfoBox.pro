@@ -19,15 +19,15 @@ OBJECTS_DIR = obj
 SOURCES += src/main.cpp \
            src/mainwindow.cpp \
            src/sqlhelper.cpp \
-    src/androidreciever.cpp \
     src/athread.cpp \
-    src/contact.cpp
+    src/contact.cpp \
+    src/androidreceiver.cpp
 
 HEADERS += inc/mainwindow.h \
            inc/sqlhelper.h \
-    inc/androidreciever.h \
     inc/athread.h \
-    inc/contact.h
+    inc/contact.h \
+    inc/androidreceiver.h
 
 FORMS   += ui/mainwindow.ui \
 

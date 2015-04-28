@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 
-#include "androidreciever.h"
+#include "androidreceiver.h"
 
 
 int main(int argc, char *argv[])
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    androidReciever android(0, &w);
+    androidReceiver android(0, &w);
     android.startServer();
 
 

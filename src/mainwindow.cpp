@@ -270,6 +270,10 @@ void MainWindow::display_Contacts(void)
         contacts[i].pbutton->setText(contacts[i].name);
         contacts[i].setVisible(true);
     }
+    if (contacts.size() == 0)
+    {
+        ui->label_NoContact->show();
+    }
 }
 
 void MainWindow::set_Number(QString number)

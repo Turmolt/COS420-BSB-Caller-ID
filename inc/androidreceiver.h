@@ -1,5 +1,5 @@
-#ifndef ANDROIDRECIEVER_H
-#define ANDROIDRECIEVER_H
+#ifndef ANDROIDRECEIVER_H
+#define ANDROIDRECEIVER_H
 
 #include <QString>
 #include <QTcpServer>
@@ -8,12 +8,12 @@
 #include "mainwindow.h"
 
 
-class androidReciever : public QTcpServer
+class androidReceiver : public QTcpServer
 {
     Q_OBJECT
 
     public:
-        explicit androidReciever (QObject *parent = 0, MainWindow *w = NULL);
+        explicit androidReceiver (QObject *parent = 0, MainWindow *w = NULL);
         void startServer();
 
     public slots:
